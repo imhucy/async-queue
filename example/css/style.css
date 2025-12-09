@@ -1,0 +1,46 @@
+body, html {
+  padding: 0;
+  margin: 0;
+}
+.progress-bar {
+  width: 300px;
+  height: 20px;
+  border: 2px solid #000;
+  position: relative;
+}
+
+.progress-bar-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  background-color: lightblue;
+}
+
+ul {
+  display: flex;
+  padding: 0;
+}
+li {
+  width: 100px;
+  height: 30px;
+  line-height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ccc;
+}
+li.is-waiting {
+  background-color: #eee;
+}
+li.is-running {
+  background-color: lightblue;
+}
+li.is-success {
+  background-color: lightgreen;
+}
+li.is-failure {
+  background-color: darkred;
+  color: #fff;
+}

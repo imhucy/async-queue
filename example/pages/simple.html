@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>示例代码</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <h1>简单队列</h1>
+
+    <div id="app">
+      <div>
+        <button @click="pushTaskToQueue()">将任务添加到队列</button>
+        <button @click="queue.exec()">开始执行</button>
+        <button @click="queue.reset()">重置</button>
+        <button @click="causeTaskFail()">令任务失败</button>
+        <button @click="queue.retryAll()">重试</button>
+        <button @click="queue.pause()" v-if="!queue.isPause()">暂停</button>
+        <button @click="queue.resume()" v-if="queue.isPause()">继续</button>
+        <div>
+          <input type="checkbox" v-model="options.immediate">任务添加时立即开始执行
+          <input type="checkbox" v-model="options.removeAfterFinish">任务完成时从队列中删除任务
+          <input type="checkbox" v-model="options.continueWhenError">任务失败时继续执行
+        </div>
+        <div>队列执行状态: {{queue.status}}</div>
+        <div>
+          <div class="progress-bar">
+            <div
+              class="progress-bar-inner"
+            ></div>
+          </div>
+        </div>
+        <ul>
+          <li>wait</li>
+          <li
+            v-for="item in queue.waitList"
+            :class="{
+              'is-waiting': queue.isWaitingTask(item),
+              'is-running': queue.isRunningTask(item),
+              'is-success': queue.isSuccessTask(item),
+              'is-failure': queue.isFailureTask(item)
+            }"
+          >
+            {{ item.id }}
+          </li>
+        </ul>
+
+        <ul>
+          <li>running</li>
+          <li
+            v-for="item in queue.excuteList"
+            :class="{
+              'is-waiting': queue.isWaitingTask(item),
+              'is-running': queue.isRunningTask(item),
+              'is-success': queue.isSuccessTask(item),
+              'is-failure': queue.isFailureTask(item)
+            }"
+          >
+            {{ item.id }}
+          </li>
+        </ul>
+
+        <ul>
+          <li>finish</li>
+          <li
+            v-for="item in queue.finishList"
+            :class="{
+              'is-waiting': queue.isWaitingTask(item),
+              'is-running': queue.isRunningTask(item),
+              'is-success': queue.isSuccessTask(item),
+              'is-failure': queue.isFailureTask(item)
+            }"
+          >
+            {{ item.id }}
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <hr>
+    <script src="../lib/gsap.min.js"></script>
+    <script src="../lib/vue.global.prod.min.js"></script>
+    <script src="../js/simple.mjs" type="module"></script>
+  </body>
+</html>

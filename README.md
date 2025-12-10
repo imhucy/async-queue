@@ -433,16 +433,13 @@ apiQueue.exec()
 
 ## 架构设计
 
-AsyncQueue 直接继承自 Emitter 类，提供完整的事件驱动能力。这样设计的优势：
+AsyncQueue 提供完整的事件驱动能力。这样设计的优势：
 
-- **简洁 API**：无需通过 `queue.emitter` 访问，直接使用 `queue.on()`、`queue.emit()` 等方法
 - **类型安全**：完整的 TypeScript 泛型支持，事件类型自动推断
 - **功能完整**：Emitter 提供了丰富的事件管理方法
 - **易于扩展**：可轻松继承 AsyncQueue 并添加自定义事件
 
-## 内置 Emitter 类
-
-项目内置了一个功能完整的 Emitter 类 (`src/events/index.ts`)，支持：
+## 事件API
 
 - `on(eventName, handler)` - 监听事件
 - `once(eventName, handler)` - 监听一次

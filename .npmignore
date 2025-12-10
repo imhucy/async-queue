@@ -1,0 +1,7 @@
+example/
+node_modules/
+.gitignore
+.DS_Store
+src/
+test/
+*.log

@@ -1,7 +1,7 @@
 {
   "name": "@hucy_hucy/async-queue",
   "version": "0.0.1",
-  "description": "create a axios wrapper function for request cache and intercept repeat request",
+  "description": "an async task queue manager tool",
   "main": "dist/index.umd.js",
   "source": "src/index.ts",
   "module": "dist/index.modern.module.js",
@@ -17,7 +17,8 @@
   "homepage": "https://github.com/imhucy/async-queue#readme",
   "scripts": {
     "dev": "microbundle watch",
-    "build": "microbundle"    
+    "build": "microbundle",
+    "release": "node ./scripts/release.js"
   },
   "author": "hucy_hucy",
   "devDependencies": {

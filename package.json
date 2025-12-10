@@ -1,6 +1,6 @@
 {
   "name": "@hucy_hucy/async-queue",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "an async task queue manager tool",
   "main": "dist/index.umd.js",
   "source": "src/index.ts",
